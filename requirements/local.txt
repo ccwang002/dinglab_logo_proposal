@@ -1,0 +1,46 @@
+-r base.txt
+
+# A configurable set of panels that display various debug information about
+# the current request/response.
+# http://django-debug-toolbar.readthedocs.org/
+django-debug-toolbar >=1.5, < 1.6
+
+# The Python WSGI Utility Library
+# http://werkzeug.pocoo.org/
+Werkzeug >= 0.11, < 0.12
+
+# A mature full-featured Python testing tool
+# http://pytest.org/latest/
+pytest >= 3.0, < 3.1
+
+# A plugin for py.test that provides a set of useful tools for testing Django
+# applications and projects.
+# https://pytest-django.readthedocs.org/
+pytest-django >= 3.0, < 3.1
+
+# Code coverage measurement for Python
+# https://coverage.readthedocs.org/
+coverage >= 4.2, < 4.3
+
+# Pytest plugin for measuring coverage.
+# https://pypi.python.org/pypi/pytest-cov
+pytest-cov >= 2.3, < 2.4
+
+# xdist: pytest distributed testing plugin
+# Use this plugin to speed up the test speed
+# http://pytest.org/latest/xdist.html
+pytest-xdist >= 1.15, < 2
+
+# The most feature-rich and easy-to-use library for processing XML and HTML in
+# the Python language.
+# http://lxml.de
+lxml >= 3.6, < 3.7
+
+# Parses CSS3 Selectors and translate them to XPath 1.0 expressions.
+# https://pythonhosted.org/cssselect/
+cssselect >= 0.9.1, < 1.0
+
+# Fabric is a simple, Pythonic tool for remote execution and deployment.
+# We use the Python 3.4+ fork, Fabric3.
+# https://github.com/mathiasertl/fabric
+fabric3 >= 1.10.3.post3

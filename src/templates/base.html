@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+{% load compress static %}
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	{% block head_tags %}{% endblock head_tags %}
+	{% block css %}
+		{% compress css %}
+			<!-- Bootstrap v3 via SASS-->
+			<link rel="stylesheet" type="text/x-scss" href="{% static 'css/site.scss' %}">
+		{% endcompress css %}
+	{% endblock css %}
+	{% block extra_css %}{% endblock extra_css %}
+	{% block titletag %}
+		<title>{% block title %}{% endblock %} | Ding's Lab Logo Proposal</title>
+	{% endblock %}
+</head>
+<body>
+{% block body %}
+	{% block nav %}
+	{% include '_includes/nav.html' %}
+	{% endblock nav %}
+	<div class="container">
+		{% block messages %}
+			{% include '_includes/messages.html' %}
+		{% endblock messages %}
+		{% block content %}It works!{% endblock %}
+	</div>
+	{% block footer %}
+	{% include '_includes/footer.html' %}
+	{% endblock footer %}
+{% endblock %}
+{% block js %}
+	<!-- jQuery v2 -->
+	<script src="{% static 'js/vendors/jquery.js' %}"></script>
+	<!-- AJAX CSRF token -->
+	{% compress js %}
+	<script src="{% static 'js/ajax_csrf_token.js' %}"></script>
+	{% endcompress js %}
+	<!-- Bootstrap v3 -->
+	<script src="{% static 'js/vendors/bootstrap.js' %}"></script>
+{% endblock js %}
+{% block extra_js %}{% endblock %}
+{% compress js %}
+	{% block scripts %}{% endblock %}
+{% endcompress js %}
+</body>
+</html>
+
