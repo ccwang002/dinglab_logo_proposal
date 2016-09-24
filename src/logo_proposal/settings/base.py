@@ -63,6 +63,7 @@ THIRD_PARTY_APPS = (
 
 LOCAL_APPS = (
     'users',
+    'proposals',
     'core',
 )
 
@@ -107,7 +108,7 @@ WSGI_APPLICATION = 'logo_proposal.wsgi.application'
 
 
 # Password validation
-# https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
+# https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
 #     {
@@ -126,7 +127,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/1.9/topics/i18n/
+# https://docs.djangoproject.com/en/1.10/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -140,7 +141,7 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
+# https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
 
@@ -155,6 +156,14 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
 )
+
+
+# Media files settings (user uploaded data)
+# https://docs.djangoproject.com/en/1.10/topics/files/
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = env.str('MEDIA_ROOT', str(Path(BASE_DIR, 'media')))
 
 
 # URL settings.
@@ -184,3 +193,8 @@ COMPRESS_PRECOMPILERS = (
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 WERKZEUG_DEBUG = env.bool('WERKZEUG_DEBUG', default=False)
+
+
+# Proposal related settings
+
+NUM_PROPOSALS_PER_USER = 2

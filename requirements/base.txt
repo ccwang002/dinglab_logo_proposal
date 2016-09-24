@@ -26,3 +26,7 @@ ipython
 # World Timezone Definitions for Python.
 # http://pythonhosted.org/pytz/
 pytz >= 2016.6
+
+# The friendly PIL fork. PIL is the Python Imaging Library.
+# https://python-pillow.org/
+pillow >= 3.3, < 4

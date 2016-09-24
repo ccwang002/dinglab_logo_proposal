@@ -15,6 +15,7 @@ __pycache__/
 *.log
 venv/
 assets/
+media/
 local.db
 *.sqlite3
 db_dump/
