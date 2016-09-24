@@ -28,6 +28,7 @@ class LogoProposal(models.Model):
 
     description = models.TextField(
         max_length=420,
+        blank=True,
         help_text=_(
             'Description of the logo proposal. Can be the philosophy or story '
             'behind the design. Should be fit within three Tweets '

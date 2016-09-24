@@ -34,7 +34,7 @@ class LogoProposalCreateForm(RequestUserValidationMixin, forms.ModelForm):
             ),
             FormActions(
                 Submit(
-                    'save', _('Create Account'), css_class='btn-lg btn-block',
+                    'save', _('Submit'), css_class='btn-lg btn-block',
                 )
             )
         )

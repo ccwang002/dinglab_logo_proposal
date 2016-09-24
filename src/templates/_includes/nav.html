@@ -18,6 +18,7 @@
 			<ul class="nav navbar-nav">
 				{# Put links that require login in the following if-block #}
 				{% if user.is_authenticated %}
+					<li><a href="{% url 'list_proposal' %}">My Proposals</a></li>
 				{% endif %}
 			</ul>
 			<!-- Right Navbar -->

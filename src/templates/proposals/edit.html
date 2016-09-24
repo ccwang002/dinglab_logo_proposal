@@ -3,6 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-	<h2>New logo proposal</h2>
+	<h2>Edit logo proposal #{{ object.pk }}</h2>
+	<img style="max-width: 200px" src="{{ object.logo.url }}" alt="">
 	{% crispy form %}
 {% endblock content %}
