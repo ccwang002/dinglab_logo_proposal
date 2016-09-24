@@ -16,7 +16,10 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         proposals = LogoProposal.objects.all()
-        proposals_list = list(grouper(proposals, 3))
-        proposals_list[-1] = [p for p in proposals_list[-1] if p]
+        if proposals:
+            proposals_list = list(grouper(proposals, 3))
+            proposals_list[-1] = [p for p in proposals_list[-1] if p]
+        else:
+            proposals_list = []
         context['proposals_list'] = proposals_list
         return context
