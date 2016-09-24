@@ -197,4 +197,4 @@ WERKZEUG_DEBUG = env.bool('WERKZEUG_DEBUG', default=False)
 
 # Proposal related settings
 
-NUM_PROPOSALS_PER_USER = 2
+NUM_PROPOSALS_PER_USER = 3
