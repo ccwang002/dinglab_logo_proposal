@@ -97,6 +97,9 @@ class Review(models.Model):
         ),
     )
 
+    class Meta:
+        unique_together = (("reviewer", "proposal"),)
+
     def get_absolute_url(self):
         from django.urls import reverse
         return reverse('edit_review', kwargs={'proposal_pk': self.proposal.pk})

@@ -88,8 +88,9 @@ class ReviewEditView(LoginRequiredMixin, UpdateView):
     def get_proposal(self):
         try:
             proposal = (
-                self.request.user.reviews
-                .get(pk=self.kwargs['proposal_pk'])
+                Review.objects
+                .filter(reviewer=self.request.user)
+                .get(proposal=self.kwargs['proposal_pk'])
                 .proposal
             )
         except self.model.DoesNotExist:
