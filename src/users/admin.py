@@ -18,7 +18,7 @@ class UserAdmin(UserAdmin):
             _('Personal info'),
             {
                 'fields': (
-                    'name', 'auth_number',
+                    'name',
                 ),
             },
         ),
