@@ -9,7 +9,6 @@ DEBUG = False
 # Must mention ALLOWED_HOSTS in production!
 ALLOWED_HOSTS = [
     'dinglab-logo.liang2.io',
-    '45.55.160.118',
 ]
 
 
