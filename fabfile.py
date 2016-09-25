@@ -17,16 +17,12 @@ def backup():
     cmd_dumpdata = 'python manage.py dumpdata '
     with lcd(src_p.as_posix()):
         local(
-            cmd_dumpdata + 'users.EmailUser data_sources.DataSource | '
-            'tee ../db_dump/user_sources.json'
+            cmd_dumpdata + 'users proposals | '
+            'tee ../db_dump/user_proposals.json'
         )
         local(
-            cmd_dumpdata + 'experiments | '
-            'tee ../db_dump/experiments.json'
-        )
-        local(
-            cmd_dumpdata + 'analyses.GenomeReference | '
-            'tee ../db_dump/genome_reference.json'
+            cmd_dumpdata + 'reviews | '
+            'tee ../db_dump/reviews.json'
         )
 
 
