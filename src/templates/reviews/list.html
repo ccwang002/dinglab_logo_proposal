@@ -1,0 +1,30 @@
+{% extends 'reviews/base.html' %}
+
+{% block content %}
+	<h2>Proposals to review</h2>
+	<table class="table table-striped">
+		<thead>
+		<tr>
+			<th>Proposal ID</th>
+			<th>Logo</th>
+			<th>Description</th>
+			<th>Overall Impact Score</th>
+			<th>Review</th>
+		</tr>
+		</thead>
+		<tbody>
+		{% for review in object_list %}
+			<tr>
+				<td>{{ review.proposal.pk }}</td>
+				<td>
+					<img src="{{ review.proposal.logo.url }}" alt="" class="img-responsive" style="max-width: 400px">
+				</td>
+				<td>{{ review.proposal.description }}</td>
+				<td>{{ review.overall_impact }}</td>
+				<td><a href="{{ review.get_absolute_url }}">Edit</a></td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock content %}

@@ -35,3 +35,9 @@ class LogoProposal(models.Model):
             '(less than 420 chars).'
         )
     )
+
+    def __str__(self):
+        filename = str(Path(self.logo.name).name)
+        return '{} ({}) by {!s}'.format(
+            filename, self.pk, self.owner
+        )

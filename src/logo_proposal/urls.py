@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^$', IndexView.as_view(), name='index'),
     url(r'^accounts/', include('users.urls')),
     url(r'^proposals/', include('proposals.urls')),
+    url(r'^reviews/', include('reviews.urls')),
     url(r'^admin/', admin.site.urls),
 ]
 
