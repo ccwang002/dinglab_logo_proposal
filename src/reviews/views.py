@@ -55,7 +55,7 @@ def create_new_review(request):
         proposal_to_review = random.choice(weighted_unseen_proposals)
     else:
         # all proposals are sufficiently reviewed
-        proposal_to_review = random.choice(reviewed_proposals)
+        proposal_to_review = random.choice(unseen_proposals)
 
     Review.objects.create(
         reviewer=reviewer,
