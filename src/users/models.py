@@ -163,6 +163,12 @@ class EmailUser(AbstractBaseUser, PermissionsMixin):
     def get_short_name(self):
         return self.name
 
+    def get_repr_name(self):
+        if self.name:
+            return self.name
+        else:
+            return self.email
+
     def get_verification_key(self):
         key = signing.dumps(
             obj=getattr(self, self.USERNAME_FIELD),

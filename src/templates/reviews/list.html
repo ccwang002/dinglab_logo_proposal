@@ -20,7 +20,7 @@
 					<td>
 						<img src="{{ review.proposal.logo.url }}" alt="" class="img-responsive" style="max-width: 400px">
 					</td>
-					<td>{{ review.proposal.owner.email }}</td>
+					<td>{{ review.proposal.owner.get_repr_name }}</td>
 					<td>{{ review.overall_impact }}</td>
 					<td><a href="{{ review.get_absolute_url }}">Edit</a></td>
 				</tr>
