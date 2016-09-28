@@ -6,6 +6,8 @@
 	<h2>Review of proposal #{{ object.proposal.pk }}</h2>
 	<h3>Logo</h3>
 	<img style="max-width: 400px" src="{{ object.proposal.logo.url }}" alt="">
+	<h4>Submitter:</h4>
+	<p>{{ object.proposal.owner.email }}</p>
 	<h4>Description:</h4>
 	<p>{{ object.proposal.description }}</p>
 	<h3>Review</h3>
