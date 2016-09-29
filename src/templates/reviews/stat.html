@@ -1,0 +1,64 @@
+{% extends 'reviews/base.html' %}
+
+{% block title %}Review Statistics{% endblock title %}
+
+{% block content %}
+<h1>Proposal Review Statistics</h1>
+
+{% for proposal in object_list %}
+	<div class="row">
+		<div class="col-md-12">
+			<h2>
+				Proposal #{{ proposal.pk }}
+				(avg impact: {{ proposal.avg_score|stringformat:"1.1f" }},
+				rank: {{ forloop.counter }})
+			</h2>
+		</div>
+		<div class="col-md-4">
+			<img src="{{ proposal.logo.url }}" alt="" class="img-responsive">
+		</div>
+		<div class="col-md-8">
+			<h4>Submitter</h4>
+				{{ proposal.owner.get_repr_name }}
+			<h4>Description</h4>
+				{{ proposal.description }}
+		</div>
+		<div class="col-md-12">
+			<h3>Review details</h3>
+			<div class="table-responsive">
+				<table class="table table-condensed table-striped">
+					<thead>
+					<tr>
+						<th>Reviewer</th>
+						<th>Impact</th>
+						<th>Significance</th>
+						<th>Innovation</th>
+						<th>Approach</th>
+						<th>Investigator</th>
+						<th>Environment</th>
+					</tr>
+					</thead>
+					<tbody>
+					{% for review in proposal.reviews.all %}
+						<tr>
+							<td rowspan="2">{{ review.reviewer.get_repr_name }}</td>
+							<td>{{ review.overall_impact }}</td>
+							<td>{{ review.significance }}</td>
+							<td>{{ review.innovation }}</td>
+							<td>{{ review.approach }}</td>
+							<td>{{ review.investigator }}</td>
+							<td>{{ review.environment }}</td>
+						</tr>
+						<tr>
+						    <td colspan="6">{{ review.comment }}</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+{% endfor %}
+
+{% endblock content %}

@@ -122,3 +122,18 @@ class ReviewEditView(LoginRequiredMixin, UpdateView):
             'proposal': self.proposal,
         }
         return kwargs
+
+
+class ReviewStatView(LoginRequiredMixin, ListView):
+    model = LogoProposal
+    template_name = 'reviews/stat.html'
+
+    def get_queryset(self):
+        ordered_proposals = self.model.objects.raw(
+            'SELECT proposal_id AS id, avg(overall_impact) AS avg_score '
+            'FROM reviews_review '
+            'WHERE overall_impact NOT NULL '
+            'GROUP BY proposal_id '
+            'ORDER BY avg_score ASC '
+        )
+        return ordered_proposals

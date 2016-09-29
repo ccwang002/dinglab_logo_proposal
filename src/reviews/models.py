@@ -103,3 +103,8 @@ class Review(models.Model):
     def get_absolute_url(self):
         from django.urls import reverse
         return reverse('edit_review', kwargs={'proposal_pk': self.proposal.pk})
+
+    def __str__(self):
+        return 'Proposal #{:d} by {:s}'.format(
+            self.proposal_id, self.reviewer.get_repr_name()
+        )
