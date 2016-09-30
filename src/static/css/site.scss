@@ -93,7 +93,7 @@ body {
 
 @media print {
     .proposal {
-        img {
+        .logo-desc {
             page-break-inside: avoid;
         }
         h3 {

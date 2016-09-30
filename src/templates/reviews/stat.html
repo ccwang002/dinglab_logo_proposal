@@ -11,21 +11,23 @@
 
 {% for proposal in object_list %}
 	<div class="row proposal">
-		<div class="col-sm-12">
-			<h2>
-				Proposal #{{ proposal.pk }}
-				(avg impact: {{ proposal.avg_score|stringformat:"1.1f" }},
-				rank: {{ forloop.counter }})
-			</h2>
-		</div>
-		<div class="col-sm-4">
-			<img src="{{ proposal.logo.url }}" alt="" class="img-responsive">
-		</div>
-		<div class="col-sm-8">
-			<h4>Submitter</h4>
-			<p>{{ proposal.owner.get_repr_name }}</p>
-			<h4>Description</h4>
-			<p>{{ proposal.description }}</p>
+		<div class="logo-desc">
+			<div class="col-sm-12">
+				<h2>
+					Proposal #{{ proposal.pk }}
+					(avg impact: {{ proposal.avg_score|stringformat:"1.1f" }},
+					rank: {{ forloop.counter }})
+				</h2>
+			</div>
+			<div class="col-sm-4">
+				<img src="{{ proposal.logo.url }}" alt="" class="img-responsive">
+			</div>
+			<div class="col-sm-8">
+				<h4>Submitter</h4>
+				<p>{{ proposal.owner.get_repr_name }}</p>
+				<h4>Description</h4>
+				<p>{{ proposal.description }}</p>
+			</div>
 		</div>
 		<div class="col-sm-12">
 			<h3>Review details</h3>
