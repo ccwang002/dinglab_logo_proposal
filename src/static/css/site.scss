@@ -94,7 +94,9 @@ body {
 @media print {
     .proposal {
         .logo-desc {
-            page-break-inside: avoid;
+            .col-sm-4, .col-sm-8 {
+                page-break-inside: avoid;
+            }
         }
         h3 {
             page-break-after: avoid;
