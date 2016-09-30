@@ -83,3 +83,23 @@ body {
         margin-bottom: 0px;
     }
 }
+
+@media print {
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+
+@media print {
+    .proposal {
+        img {
+            page-break-inside: avoid;
+        }
+        h3 {
+            page-break-after: avoid;
+        }
+    }
+}
+
+
