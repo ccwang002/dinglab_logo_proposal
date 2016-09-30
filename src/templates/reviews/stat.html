@@ -34,7 +34,7 @@
 					<thead>
 					<tr>
 						<th>Reviewer</th>
-						<th>Impact</th>
+						<th><strong>Impact</strong></th>
 						<th>Significance</th>
 						<th>Innovation</th>
 						<th>Approach</th>
@@ -46,7 +46,7 @@
 					{% for review in proposal.reviews.all %}
 						<tr>
 							<td rowspan="2">{{ review.reviewer.get_repr_name }}</td>
-							<td>{{ review.overall_impact }}</td>
+							<td><strong>{{ review.overall_impact }}</strong></td>
 							<td>{{ review.significance }}</td>
 							<td>{{ review.innovation }}</td>
 							<td>{{ review.approach }}</td>
