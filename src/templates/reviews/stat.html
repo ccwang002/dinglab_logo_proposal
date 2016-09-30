@@ -35,7 +35,7 @@
 				<table class="table table-condensed table-striped">
 					<thead>
 					<tr>
-						<th>Reviewer</th>
+{#						<th>Reviewer</th>#}
 						<th><strong>Impact</strong></th>
 						<th>Significance</th>
 						<th>Innovation</th>
@@ -47,7 +47,7 @@
 					<tbody>
 					{% for review in proposal.reviews.all %}
 						<tr>
-							<td rowspan="2">{{ review.reviewer.get_repr_name }}</td>
+{#							<td rowspan="2">{{ review.reviewer.get_repr_name }}</td>#}
 							<td><strong>{{ review.overall_impact }}</strong></td>
 							<td>{{ review.significance }}</td>
 							<td>{{ review.innovation }}</td>
@@ -60,7 +60,7 @@
 						</tr>
 					{% endfor %}
 					<tr>
-						<td></td>
+{#						<td></td>#}
 						<td><br>_______</td>
 						<td colspan="4"></td>
 						<td><br>(New review here)</td>
