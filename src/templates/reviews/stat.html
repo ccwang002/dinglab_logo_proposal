@@ -1,5 +1,9 @@
 {% extends 'reviews/base.html' %}
 
+{% block nav %}
+{% include '_includes/nav.html' with active='stat' %}
+{% endblock nav %}
+
 {% block title %}Review Statistics{% endblock title %}
 
 {% block content %}

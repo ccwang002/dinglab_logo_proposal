@@ -24,6 +24,9 @@
 				<li class="{% if active == 'reviews' %}active{% endif %}">
 					<a href="{% url 'list_review' %}">My Reviews</a>
 				</li>
+				<li class="{% if active == 'stat' %}active{% endif %}">
+					<a href="{% url 'review_stat' %}">Review Stat</a>
+				</li>
 				{% endif %}
 			</ul>
 			<!-- Right Navbar -->
