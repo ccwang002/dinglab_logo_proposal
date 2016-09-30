@@ -10,10 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
+from datetime import datetime
 from os.path import abspath, dirname, join, exists
 from pathlib import Path
 from django.core.urlresolvers import reverse_lazy
-from django.conf import ImproperlyConfigured
+import pytz
 
 # Build paths inside the project like this: join(BASE_DIR, "directory")
 BASE_DIR = dirname(dirname(dirname(abspath(__file__))))
@@ -201,3 +202,5 @@ WERKZEUG_DEBUG = env.bool('WERKZEUG_DEBUG', default=False)
 NUM_PROPOSALS_PER_USER = 3
 
 NUM_REVIEWS_PER_USER = 5
+
+DATE_DISPLAY_REVIEW_STAT = pytz.UTC.localize(datetime(2016, 9, 30, 17, 0))

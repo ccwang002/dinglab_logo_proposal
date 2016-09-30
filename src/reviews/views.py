@@ -2,9 +2,11 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
+from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse_lazy
 from django.http import Http404
 from django.shortcuts import redirect
+from django.utils.timezone import now
 from django.views.generic import UpdateView, ListView
 from django.views.decorators.http import require_POST
 import itertools
@@ -127,6 +129,15 @@ class ReviewEditView(LoginRequiredMixin, UpdateView):
 class ReviewStatView(LoginRequiredMixin, ListView):
     model = LogoProposal
     template_name = 'reviews/stat.html'
+
+    def get(self, request, *args, **kwargs):
+        after_review_deadline = (
+            now() > settings.DATE_DISPLAY_REVIEW_STAT
+        )
+        if request.user.is_staff or after_review_deadline:
+            return super().get(request, *args, **kwargs)
+        else:
+            raise PermissionDenied
 
     def get_queryset(self):
         ordered_proposals = self.model.objects.raw(
