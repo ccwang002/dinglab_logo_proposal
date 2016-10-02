@@ -11,9 +11,10 @@ from django.views.generic import UpdateView, ListView
 from django.views.decorators.http import require_POST
 import itertools
 import random
+from statistics import mean
 
 from proposals.models import LogoProposal
-from .models import Review
+from .models import Review, StudySectionReview
 from .forms import ReviewUpdateForm
 
 
@@ -148,3 +149,20 @@ class ReviewStatView(LoginRequiredMixin, ListView):
             'ORDER BY avg_score ASC '
         )
         return ordered_proposals
+
+
+class StudySectionReviewStatView(LoginRequiredMixin, ListView):
+    model = StudySectionReview
+    template_name = 'reviews/study_section_stat.html'
+
+    def get_queryset(self):
+        ss_reviews = self.model.objects.prefetch_related('proposal').all()
+        parsed_ss_reviews = []
+        for review in ss_reviews:
+            scores = list(map(int, review.raw_score_list.split(',')))
+            avg_score = mean(scores)
+            proposal = review.proposal
+            parsed_ss_reviews.append((proposal, avg_score, scores, review.summary))
+
+        sorted_ss_reviews = sorted(parsed_ss_reviews, key=lambda t: t[1])
+        return sorted_ss_reviews

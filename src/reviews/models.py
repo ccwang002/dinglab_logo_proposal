@@ -1,5 +1,7 @@
 from django.conf import settings
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import (
+    MaxValueValidator, MinValueValidator, int_list_validator
+)
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -108,3 +110,33 @@ class Review(models.Model):
         return 'Proposal #{:d} by {:s}'.format(
             self.proposal_id, self.reviewer.get_repr_name()
         )
+
+
+class StudySectionReview(models.Model):
+
+    proposal = models.ForeignKey(
+        "proposals.LogoProposal",
+        on_delete=models.CASCADE,
+        related_name='study_reviews',
+    )
+
+    raw_score_list = models.CharField(
+        validators=[int_list_validator(), ],
+        max_length=512,
+    )
+
+    summary = models.TextField(blank=True, default='')
+
+    def __str__(self):
+        return 'Study section score of proposal #{:d}'.format(
+            self.proposal_id
+        )
+
+# for p_id, scores in scores_by_proposals.items():
+#     proposal = LogoProposal.objects.get(pk=p_id)
+#     ss_review = StudySectionReview(
+#          proposal=proposal,
+#          raw_score_list=','.join(map(str, scores))
+#     )
+#     print(ss_review)
+#     ss_review.save()
