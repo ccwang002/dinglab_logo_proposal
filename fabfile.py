@@ -27,25 +27,6 @@ def backup():
 
 
 @task
-def reborn():
-    with lcd(src_p.as_posix()):
-        db_dump_dir = Path(env.cwd, '../db_dump')
-        if not (
-            db_dump_dir.joinpath('user_sources.json').exists() and
-            db_dump_dir.joinpath('genome_reference.json').exists() and
-            db_dump_dir.joinpath('experiments.json').exists()
-        ):
-            abort('Backup the import database content first!')
-        confirm('Destory and re-create the current database?', False)
-
-        local('dropdb biocloud')
-        local('createdb biocloud')
-        local('python manage.py migrate')
-        local('python manage.py loaddata ../db_dump/user_sources.json')
-        local('python manage.py loaddata ../db_dump/genome_reference.json')
-        local('python manage.py loaddata ../db_dump/experiments.json')
-
-@task
 def cloc():
     with lcd(src_p.parent.as_posix()):
         local(
