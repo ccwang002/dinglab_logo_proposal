@@ -19,6 +19,7 @@ media/
 local.db
 *.sqlite3
 db_dump/
+db_backups/
 
 # Linux Editors
 *~
