@@ -67,6 +67,24 @@ and a local SMTP server so all email sending will be captured
     fab start_smtp
 
 
+### Restore the data backup
+
+One can restore the data from website from `data_backup_2016-10-11.tar.gz`
+
+    rm src/db.sqlite3  # remove current database (IRREVERSIBLE ACTION!!)
+    tar xf data_backup_*.tar.gz
+    
+    cd src
+    python manage.py migrate  # rerun the migration
+    python manage.py loaddata ../db_dump/user_proposals.json
+    python manage.py loaddata ../db_dump/reviews.json
+    
+    rm -rf media/
+    mv ../media .
+    
+Run the server again, one should see the accounts, logos and reviews are all back.
+
+
 ## License
 
 Release under MIT License. A great portion of code is adapted from [PyCon Taiwan 2016 website]'s source code under license MIT.
